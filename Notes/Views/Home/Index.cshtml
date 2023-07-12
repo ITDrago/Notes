@@ -1,8 +1,101 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Название страницы</title>
+    <style>
+        body {
+            background-color: #a2a73ed9;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+        .parent {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: -150px;
+            left: 0;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            overflow: auto;
+        }
+
+        .wrapper {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        a {
+            display: block;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            font-family: sans-serif;
+            text-decoration: none;
+            color: #333;
+            border: 2px solid #333;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            transition: all .35s;
+        }
+
+            a span {
+                position: relative;
+                z-index: 2;
+            }
+
+            a:after {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: #c93131;
+                transition: all .35s;
+            }
+
+            a:hover {
+                color: #fff;
+            }
+
+                a:hover:after {
+                    width: 100%;
+                }
+
+        
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="logo">
+            <img src="~/images/logo.png" width="150px" height="150px">
+            <div class="wrapper">
+                <a href="/Login/Login"><span>Login</span></a>
+            </div>
+            <div class="wrapper" style="margin-top:50px;">
+                <a href="/Register/Index"><span>Register</span></a>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
