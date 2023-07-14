@@ -45,7 +45,7 @@ namespace Notes.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Menu");
                     }
                 }
                 //Password is incorrect
@@ -55,6 +55,12 @@ namespace Notes.Controllers
             //User not found
             TempData["Error"] = "Wrong credentials. Please try again";
             return View(loginViewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

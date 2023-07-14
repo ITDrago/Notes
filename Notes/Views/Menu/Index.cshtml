@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes</title>
+    <style>
+        body {
+            background-color: #a2a73ed9;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+        .parent{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: -150px;
+            left: 0;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            overflow: auto;
+        }
+
+        .wrapper {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        a {
+            display: block;
+            width: 400px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            font-family: sans-serif;
+            text-decoration: none;
+            color: #333;
+            border: 2px solid #333;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            transition: all .35s;
+        }
+
+            a span {
+                position: relative;
+                z-index: 2;
+            }
+
+            a:after {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: #957038;
+                transition: all .35s;
+            }
+
+            a:hover {
+                color: #fff;
+            }
+
+                a:hover:after {
+                    width: 100%;
+                }
+     </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="logo">
+            <img src="~/images/logo.png" width="150px" height="150px">
+        </div>
+        <div class="wrapper">
+            <a href="/Login/Login"><span>New Notes</span></a>
+        </div>
+        <div class="wrapper" style="margin-top:50px;">
+            <a href="/Register/Register"><span>All Notes</span></a>
+        </div>
+        <form class="wrapper" style="margin-top:106px" asp-area="" asp-controller="Login" asp-action="Logout">
+            <button class="btn btn-outline-success float right" type="submit" style="display: block;
+                                                                                    width: 404px;
+                                                                                    margin-top: -9px;
+                                                                                    height: 46px;
+                                                                                    line-height: 40px;
+                                                                                    font-size: 18px;
+                                                                                    font-family: sans-serif;
+                                                                                    text-decoration: none;
+                                                                                    color: #333;
+                                                                                    border: 2px solid #333;
+                                                                                    letter-spacing: 2px;
+                                                                                    text-align: center;
+                                                                                    position: relative;
+                                                                                    transition: all .35s;
+                                                                                    background-color: #c93131;">Logout</button>
+        </form>
+    </div>
+</body>
+</html>
