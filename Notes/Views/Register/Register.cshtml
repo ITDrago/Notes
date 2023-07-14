@@ -1,9 +1,11 @@
-﻿﻿@using Notes.Views.Login;
-@model LoginViewModel
+﻿﻿@using Notes.Views.Register;
+@model RegisterViewModel
+
 @{
+    ViewData["Title"] = "Sign up";
 }
 <style>
-    body{
+    body {
         background-color: #a2a73ed9;
         width: 100%;
         height: 100%;
@@ -14,17 +16,18 @@
         flex-wrap: wrap;
         font-family: 'Open Sans Condensed', sans-serif;
     }
-    .row1{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: -88px;
-    left: 0;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    overflow: auto;
+
+    .row1 {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: -88px;
+        left: 0;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        overflow: auto;
     }
 
     .wrapper {
@@ -79,12 +82,12 @@
         <p>
             <h4 style="width: 100%;
                        margin-bottom: 61px;
-                       margin-left: 196px;
+                       margin-left: 287px;
                        font-size: 30px;
                        font-family: sans-serif;
                        text-decoration: none;
                        color: #333;">
-                Log in to your account
+                Register
             </h4>
         </p>
         @if (TempData["Error"] != null)
@@ -97,7 +100,7 @@
         }
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Login">
+                <form asp-action="Register">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group" style="margin-left:-50px;">
                         <label asp-for="EmailAddress" class="control-label" style="font-size: 25px;
@@ -125,7 +128,21 @@
                                                                               font-size: 18px;" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
-                    <div class="wrapper" style="margin-top: 96px; margin-left: -29px;">
+                    <div class="form-group" style="margin-left: -92px;
+                                                   margin-top: 10px;">
+                        <label asp-for="ConfirmPassword" class="control-label" style="font-size: 25px;
+                                                                               font-family: sans-serif;
+                                                                               text-decoration: none;
+                                                                               color: #333;"></label>
+                        <input asp-for="ConfirmPassword" class="form-control" style="width: 500px;
+                                                                              height: 40px;
+                                                                              border: 3px solid #b16d18;
+                                                                              box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+                                                                              font-family:sans-serif;
+                                                                              font-size: 18px;" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="wrapper" style="margin-top: 124px; margin-left: -29px;">
                         <input class="btn btn-outline-success float right" type="submit" style="display: block;
                                                                                                 width: 204px;
                                                                                                 height: 40px;
@@ -139,8 +156,7 @@
                                                                                                 text-align: center;
                                                                                                 position: relative;
                                                                                                 transition: all .35s;
-                                                                                                background-color: #b56749e3;" value="Login"/>
-                              
+                                                                                                background-color: #b56749e3;" value="Register" />
 
                         <a href="/Home/Index"><span>Cancel</span></a>
                     </div>
