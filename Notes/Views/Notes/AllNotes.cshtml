@@ -1,0 +1,118 @@
+﻿﻿@using Notes.Models;
+@model IEnumerable<Note>
+@{
+}
+<style>
+    body{
+        background-color: #a2a73ed9;
+    }
+
+    .table_price {
+        border-collapse: collapse;
+        border-left: 4px solid black;
+        border-right: 4px solid black;
+        border-bottom: 4px solid black;
+        width: 800px; /* Ширина таблицы */
+        margin: auto;
+        font-size: 18px;
+        font-family: sans-serif;
+        text-decoration: none;  
+        color: #333;
+        letter-spacing: 2px;
+        text-align: left;
+        position: relative;
+        transition: all .35s;
+    }
+
+        .table_price caption {
+            background: #a38c59;
+            border-top-left-radius: 60px;
+            border-top-right-radius: 60px;
+            padding: 10px;
+            box-shadow: 0 6px 6px 0 rgba(0,0,0,.3);
+            color: white;
+            font-family: "Roboto Slab",serif;
+            font-style: normal;
+            font-size: 26px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .table_price td, .table_price th {
+            padding: 10px;
+        }
+
+        .table_price th {
+            text-align: left;
+            font-size: 18px;
+        }
+
+        .table_price tr:nth-child(2n) {
+            background: #a38c59;
+        }
+
+        .table_price td:last-of-type {
+            text-align: center;
+        }
+
+    a {
+        display: block;
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+        font-family: sans-serif;
+        text-decoration: none;
+        color: #333;
+        border: 2px solid #333;
+        letter-spacing: 2px;
+        text-align: center;
+        position: relative;
+        transition: all .35s;
+    }
+
+        a span {
+            position: relative;
+            z-index: 2;
+        }
+
+        a:after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #c93131;
+            transition: all .35s;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+            a:hover:after {
+                width: 100%;
+            }
+</style>
+<body>
+    <table class="table_price">
+        <caption>
+            Your notes
+        </caption>
+        <tr>
+            <th>Name</th>
+        </tr>
+        @foreach(var note in Model)
+        {
+            <tr>
+                <td style="font-size:20px">@note.Name</td>
+                <td><a><span>Edit</span></a>
+                <td><a><span>Delete</span></a>
+
+            </td>
+            </tr>
+        }
+        
+    </table>
+</body>

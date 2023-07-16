@@ -1,0 +1,144 @@
+﻿@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Текстовое поле</title>
+    <style>
+        textarea {
+            background: #fce9c0; /* Цвет фона */
+            border: 2px solid #1b1c17;
+             /* Параметры рамки */
+            padding: 36px; /* Поля */
+            width: 870px;
+            height: 689px; /* Высота */
+            box-sizing: border-box; /* Алгоритм расчёта ширины */
+            font-size: 18px; /* Размер шрифта */
+            font-family: sans-serif;
+          
+        }
+        body{
+            background-color: #a2a73ed9;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+
+        .seven {
+            color: #524E49; /* Цвет текста */
+            background: #b56749e3; /* Фоновый цвет */
+            padding: 0px; /* Отступ текста от границ */ /*Размер текста */
+            border-radius: 5px; /* Закругление уголков */
+            box-shadow: 0px 1px 3px; /* Тень */
+            position: relative; /* Задаём относительное позиционирование */
+            transition: all 500ms ease-out; /* Задаём анимацию с временем выполнения 500ms */
+            transform-style: preserve-3d; /* Трансформация показывается как 3D */
+            width: 203px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            font-family: sans-serif;
+            text-decoration: none;
+            color: #333;
+            border: 2px solid #333;
+            letter-spacing: 2px;
+            text-align: center;
+            position: fixed;
+            transition: all .35s;
+            margin-left: 14px;
+        }
+            /* Создаём псевдо элемент - верхняя грань кнопки */
+            .seven:after { /* Добавляем псевдо элемент :after */
+                content: 'Confirm';
+                position: absolute;
+                top: -50%;
+                left: -3px;
+                width: 200px;
+                height: 40px;
+                background: #1e7713cf;
+                border-radius: 5px;
+                box-shadow: 0px 1px 3px;
+                transform-origin: bottom;
+                transform: rotateX(90deg);
+                line-height: 40px;
+                letter-spacing: 2px;
+                font-size: 18px;
+                font-family: sans-serif;
+                color: #333;
+                border: 2px solid #333;
+                text-align: center;
+                /* Размещаем в горизонтальной плоскости, в результате чего псевдо элемент не виден */
+            }
+            /* Эффект при наведении */
+            .seven:hover { /* Добавляем псевдо класс :hover */
+                transform-origin: bottom; /* Определяем точку, относительно которой происходит вращение */
+                transform: rotateX(-90deg); /* Поворачиваем на 90 градусов */
+            }
+
+        a {
+            display: block;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            font-family: sans-serif;
+            text-decoration: none;
+            color: #333;
+            border: 2px solid #333;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            transition: all .35s;
+        }
+
+            a span {
+                position: relative;
+                z-index: 2;
+            }
+
+            a:after {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: #c93131;
+                transition: all .35s;
+            }
+
+            a:hover {
+                color: #fff;
+            }
+
+                a:hover:after {
+                    width: 100%;
+                }
+
+    </style>
+</head>
+<body>
+    
+    <form asp-controller="Notes" asp-action="AddNotes" method="post" style="margin-left: 531px; margin-top: 49px">
+        <p><b style="font-size:18px;">Enter your note:</b></p>
+        <p><textarea name="comment"></textarea></p>
+        
+        <input name='name' placeholder="Enter the notion name"
+                                           style="width: 294px;
+                                           height: 35px;
+                                           border: 2px solid #1b1c17;
+                                           box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+                                           font-family: sans-serif;
+                                           font-size: 18px;
+                                           margin-left: 1px;"/>
+        <button class="seven" type="submit">Save</button>
+        <a href="/Menu/Index" style="margin-top: 30px;"><span>Exit</span></a>
+    </form>
+</body>
+</html>
