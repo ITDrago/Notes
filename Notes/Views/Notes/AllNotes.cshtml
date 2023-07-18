@@ -94,6 +94,46 @@
             a:hover:after {
                 width: 100%;
             }
+
+    .btn {
+        display: block;
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+        font-family: sans-serif;
+        text-decoration: none;
+        color: #333;
+        border: 2px solid #333;
+        letter-spacing: 2px;
+        text-align: center;
+        position: relative;
+        transition: all .35s;
+    }
+
+        .btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn:after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: green;
+            transition: all .35s;
+        }
+
+        .btn:hover {
+            color: #fff;
+        }
+
+            .btn:hover:after {
+                width: 100%;
+            }
 </style>
 <body>
     <table class="table_price">
@@ -107,12 +147,13 @@
         {
             <tr>
                 <td style="font-size:20px">@note.Name</td>
-                <td><a><span>Edit</span></a>
-                <td><a><span>Delete</span></a>
+                <td><a class="btn" asp-controller="Notes" asp-action="Edit" asp-route-id="@note.Id"><span>Edit</span></a>
+                <td><a class="a" asp-controller="Notes" asp-action="Delete" asp-route-id="@note.Id"><span>Delete</span></a>
 
             </td>
             </tr>
         }
         
     </table>
+    <a href="/Menu/Index" style="margin-top: 175px; width:600px; margin-left:34%;"><span>Exit</span></a>
 </body>

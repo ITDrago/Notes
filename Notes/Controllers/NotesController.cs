@@ -39,6 +39,31 @@ namespace Notes.Controllers
             }
             return RedirectToAction("Index");
         }
+        public IActionResult Delete(int id)
+        {
+            var note = _context.Notes.Find(id);
+            if (note != null)
+            {
+                _context.Notes.Remove(note);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("AllNotes");
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var note = _context.Notes.Find(id);
+            return View(note);
+        }
+        [HttpPost]
+        public IActionResult Edit(Note model, string comment)
+        {
+            var note = _context.Notes.Find(model.Id);
+            note!.Content = comment;
+            _context.SaveChanges();
+            return RedirectToAction("Edit"); ;
+        }
+
 
     }
 }
