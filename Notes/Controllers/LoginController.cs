@@ -4,6 +4,7 @@ using Notes.Data;
 using Notes.Models;
 using Notes.Views.Login;
 
+
 namespace Notes.Controllers
 {
     public class LoginController : Controller
@@ -21,10 +22,6 @@ namespace Notes.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return Redirect("/Home/Index");
-            }
             var response = new LoginViewModel();
             return View(response);
         }

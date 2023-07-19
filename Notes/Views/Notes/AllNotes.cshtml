@@ -142,11 +142,13 @@
         </caption>
         <tr>
             <th>Name</th>
+            <th>Date created</th>
         </tr>
         @foreach(var note in Model)
         {
             <tr>
                 <td style="font-size:20px">@note.Name</td>
+                <td style="font-size:20px">18.07.2023</td>
                 <td><a class="btn" asp-controller="Notes" asp-action="Edit" asp-route-id="@note.Id"><span>Edit</span></a>
                 <td><a class="a" asp-controller="Notes" asp-action="Delete" asp-route-id="@note.Id"><span>Delete</span></a>
 

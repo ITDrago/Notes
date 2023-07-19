@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Notes.Data;
 using Notes.Models;
+using System.Security.Claims;
 
 namespace Notes
 {
@@ -19,7 +20,10 @@ namespace Notes
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 			builder.Services.AddMemoryCache();
 			builder.Services.AddSession();
-			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            builder.Services.Configure<IdentityOptions>(options => options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
+
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 				   .AddCookie();
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
@@ -43,7 +47,7 @@ namespace Notes
 			app.UseStaticFiles();
 
 			app.UseRouting();
-
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			app.MapControllerRoute(

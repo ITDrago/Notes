@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Notes.Data;
 using Notes.Models;
+using System.Linq;
+using System.Security.Claims;
 
 namespace Notes.Controllers
 {
@@ -21,10 +23,11 @@ namespace Notes.Controllers
         {
             return View();
         }
+        
         [HttpGet]
         public IActionResult AllNotes()
         {
-            IEnumerable<Note> notes = _context.Notes.ToList();
+            IEnumerable<Note> notes = _context.Notes.Where(note => note.AppUserId == User.FindFirstValue(ClaimTypes.NameIdentifier));
             return View(notes);
            
         }
@@ -33,7 +36,9 @@ namespace Notes.Controllers
         {
             if(comment!= null && name != null)
             {
-                var note = new Note() { Name = name, Content = comment};
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var note = new Note() { Name = name, Content = comment, DataCreated = DateTime.Now, AppUserId = userId};
+                
                 _context.Notes.Add(note);
                 _context.SaveChanges();
             }
