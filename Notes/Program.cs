@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Notes.Data;
+using Notes.Interfaces;
 using Notes.Models;
+using Notes.Repository;
 using System.Security.Claims;
 
 namespace Notes
@@ -18,7 +20,8 @@ namespace Notes
 			});
 			builder.Services.AddIdentity<AppUser, IdentityRole>()
 				.AddEntityFrameworkStores<ApplicationDbContext>();
-			builder.Services.AddMemoryCache();
+            builder.Services.AddScoped<INotesRepository, NotesRepository>();
+            builder.Services.AddMemoryCache();
 			builder.Services.AddSession();
             builder.Services.Configure<IdentityOptions>(options => options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
 
